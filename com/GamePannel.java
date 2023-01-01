@@ -1,6 +1,7 @@
 package com;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,7 +12,7 @@ import com.logic.GameInterpretation;
 public class GamePannel extends JPanel implements ActionListener{
     
     private final Controls controls;
-    private GameInterpretation gameInterpretation;
+    private GameInterpretation gameInterpretation = new GameInterpretation();
 
     
 
@@ -26,12 +27,16 @@ public class GamePannel extends JPanel implements ActionListener{
     @Override
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        // this.gameInterpretation.draw(graphics);
+        this.gameInterpretation.draw((Graphics2D) graphics);
         graphics.dispose();
     }
 
-    public void actionPerformed(ActionEvent e){
-        repaint();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
     }
+
+    
     
 }

@@ -1,57 +1,64 @@
 package com.Drawing;
 
 import java.awt.Graphics2D;
-
+import java.awt.BasicStroke;
+import com.Constants;
 import com.logic.GameInterpretation;
+import java.awt.Color;
 
 public class Maze implements Painting {
 
-    
+
+    private static final int scrsize = Constants.scrsize;
+    private static final int BLOCK_SIZE = Constants.BLOCK_SIZE;
+    private static final Color mazecolor = new Color(5, 100, 5);
+    //TODO: move dots to their own class
+    private final Color dotcolor = new Color(192, 192, 0);
+    private short[] screendata;
 
     @Override
     public void draw(Graphics2D graphics) {
         short i = 0;
         int x, y;
 
-        // for (y = 0; y < scrsize; y += BLOCK_SIZE) {
-        //     for (x = 0; x < scrsize; x += BLOCK_SIZE) {
+        for (y = 0; y < scrsize; y += BLOCK_SIZE) {
+            for (x = 0; x < scrsize; x += BLOCK_SIZE) {
 
-        //         g2d.setColor(mazecolor);
-        //         g2d.setStroke(new BasicStroke(2));
+                graphics.setColor(mazecolor);
+                graphics.setStroke(new BasicStroke(2));
 
-        //         if ((screendata[i] & 1) != 0) { 
-        //             g2d.drawLine(x, y, x, y + BLOCK_SIZE - 1);
-        //         }
+                if ((screendata[i] & 1) != 0) { 
+                    graphics.drawLine(x, y, x, y + BLOCK_SIZE - 1);
+                }
 
-        //         if ((screendata[i] & 2) != 0) { 
-        //             g2d.drawLine(x, y, x + BLOCK_SIZE - 1, y);
-        //         }
+                if ((screendata[i] & 2) != 0) { 
+                    graphics.drawLine(x, y, x + BLOCK_SIZE - 1, y);
+                }
 
-        //         if ((screendata[i] & 4) != 0) { 
-        //             g2d.drawLine(x + BLOCK_SIZE - 1, y, x + BLOCK_SIZE - 1,
-        //                     y + BLOCK_SIZE - 1);
-        //         }
+                if ((screendata[i] & 4) != 0) { 
+                    graphics.drawLine(x + BLOCK_SIZE - 1, y, x + BLOCK_SIZE - 1,
+                            y + BLOCK_SIZE - 1);
+                }
 
-        //         if ((screendata[i] & 8) != 0) { 
-        //             g2d.drawLine(x, y + BLOCK_SIZE - 1, x + BLOCK_SIZE - 1,
-        //                     y + BLOCK_SIZE - 1);
-        //         }
+                if ((screendata[i] & 8) != 0) { 
+                    graphics.drawLine(x, y + BLOCK_SIZE - 1, x + BLOCK_SIZE - 1,
+                            y + BLOCK_SIZE - 1);
+                }
 
-        //         if ((screendata[i] & 16) != 0) { 
-        //             g2d.setColor(dotcolor);
-        //             g2d.fillRect(x + 11, y + 11, 2, 2);
-        //         }
+                if ((screendata[i] & 16) != 0) { 
+                    graphics.setColor(dotcolor);
+                    graphics.fillRect(x + 11, y + 11, 2, 2);
+                }
 
-        //         i++;
-        //     }
-        // }
+                i++;
+            }
+        }
         
     }
 
     @Override
     public void setInterpretation(GameInterpretation interpretation) {
-        // TODO Auto-generated method stub
-        
+        screendata= interpretation.getLeveldata();
     }
     
 }

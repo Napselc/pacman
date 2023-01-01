@@ -1,4 +1,11 @@
 package com.logic;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import com.Drawing.Maze;
+import com.Drawing.Painting;
+
 public class GameInterpretation{
     private final short leveldata[] = {
         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 21,  0,  0,  0,
@@ -22,4 +29,18 @@ public class GameInterpretation{
         0, 25, 26, 26, 26, 26, 24, 26, 24, 26, 26, 26, 26, 26, 24, 26, 18, 26, 28,  0,
         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 21,  0,  0,  0,
     };
+    
+    private Painting maze = new Maze();
+
+    
+    
+    //TODO : divide this logic into components eg. getMaze, getDots , getGhosts
+    public short[] getLeveldata() {
+        return leveldata;
+    }
+
+    public void draw(Graphics2D graphics) {
+        maze.setInterpretation(this);
+        maze.draw(graphics);
+    }
 }
