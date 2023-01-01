@@ -1,6 +1,8 @@
-package Drawing;
+package com.Drawing;
 
 import java.awt.Graphics2D;
+
+import com.logic.GameInterpretation;
 
 public class Maze implements Painting {
 
