@@ -1,0 +1,16 @@
+Server 
+    Maze
+    Move the ghosts
+    Calculate the kill
+    Calculate the herats
+    Screen interpation -> client
+    Render the interpretation
+
+client  
+    Render the implementation
+    Send player moves
+
+
+Server  
+    reqdx = clientPosition
+    
