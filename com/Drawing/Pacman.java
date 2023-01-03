@@ -6,14 +6,14 @@ import com.images.ImageProvider;
 import com.logic.GameInterpretation;
 import com.logic.Position;
 
-public class Ghost implements Painting{
+public class Pacman implements Painting
+{
     private static BufferedImage image ;
     private Position position = new Position(0, 0);
 
-   static{
-    image = ImageProvider.getImage("ghost.gif");
-   }
-
+    static{
+        image = ImageProvider.getImage("pacman.png");
+    }
 
     @Override
     public void draw(Graphics2D graphics) {
@@ -22,10 +22,8 @@ public class Ghost implements Painting{
 
     @Override
     public void setInterpretation(GameInterpretation interpretation) {
-        position.x = 40;
-        position.y = 140;
-        
-    }
+        position.x = 70;
+        position.y = 240;
 
-    
+    }
 }
