@@ -1,4 +1,4 @@
-package maze;
+
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -60,8 +60,8 @@ public class MazeClient extends JFrame {
                             String moveLocationy = command.substring(5);
                             String sRdx = moveLocationx.substring(0, moveLocationx.lastIndexOf("."));
                             String sRdy = moveLocationy.substring(moveLocationy.lastIndexOf(".") + 1);
-                            ghost_x[0] = Integer.parseInt(sRdx);
-                            ghost_y[0] = Integer.parseInt(sRdy);
+                            // ghost_x[0] = Integer.parseInt(sRdx);
+                            // ghost_y[0] = Integer.parseInt(sRdy);
                         
                     }
                 }
@@ -548,13 +548,13 @@ public class MazeClient extends JFrame {
         }
     }
 
-        private void moveGhosts(Graphics2D g2d) {
-            drawGhost(g2d, ghost_x[0] + 1, ghost_y[0] + 1);
-        }
+    private void moveGhosts(Graphics2D g2d) {
+        drawGhost(g2d, ghost_x[0] + 1, ghost_y[0] + 1);
+    }
 
-        private void drawGhost(Graphics2D g2d, int x , int y) {
-            g2d.drawImage(ghost, x, y, this);
-        }
+    private void drawGhost(Graphics2D g2d, int x , int y) {
+        g2d.drawImage(ghost, x, y, this);
+    }
 
     private void initGame() {
         score = 0;
