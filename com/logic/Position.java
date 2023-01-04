@@ -1,7 +1,5 @@
 package com.logic;
 
-import java.util.UUID;
-
 import com.Constants;
 import com.Direction;
 
@@ -20,7 +18,7 @@ public class Position{
     public void setDirection(Direction direction){
         switch(direction){
             case DOWN:
-                y = y - Constants.BLOCK_SIZE;
+                y = y + Constants.BLOCK_SIZE;
                 break;
             case LEFT:
                 x = x - Constants.BLOCK_SIZE;
@@ -29,12 +27,12 @@ public class Position{
                 x = x + Constants.BLOCK_SIZE;
                 break;
             case UP:
-                y = y + Constants.BLOCK_SIZE;
+                y = y - Constants.BLOCK_SIZE;
                 break;
             default:
                 break;
 
         }
-        System.out.printf("\nUpdated position values are : '%s' '%s' ",x,y);
+        
     }
 }

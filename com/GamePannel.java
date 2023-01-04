@@ -25,6 +25,7 @@ public class GamePannel extends JPanel {
     @Override
     public void paint(Graphics graphics){
         super.paint(graphics);
+        this.gameInterpretation.setUserInputDirection(controls.getDirection());
         this.gameInterpretation.draw((Graphics2D) graphics);
     }
 

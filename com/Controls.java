@@ -32,7 +32,14 @@ public class Controls extends KeyAdapter {
                 break;
             
         }
-        
+
+    }
+
+    /**
+     * This method should be used to read the user input.
+     */
+    public Direction getDirection() {
+        return this.direction;
     }
 
     

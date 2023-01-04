@@ -2,6 +2,7 @@ package com.logic;
 
 import java.awt.Graphics2D;
 
+import com.Direction;
 import com.Drawing.Ghost;
 import com.Drawing.Maze;
 import com.Drawing.Painting;
@@ -33,6 +34,8 @@ public class GameInterpretation{
     private Painting maze = new Maze();
     private Painting ghost = new Ghost();
 
+    private Direction userInputDirection;
+
     
     
     //TODO : divide this logic into components eg. getMaze, getDots , getGhosts
@@ -45,5 +48,13 @@ public class GameInterpretation{
         ghost.setInterpretation(this);
         maze.draw(graphics);
         ghost.draw(graphics);
+    }
+
+    public void setUserInputDirection(Direction direction) {
+        this.userInputDirection = direction;
+    }
+
+    public Direction getUserInputDirection() {
+        return this.userInputDirection;
     }
 }
