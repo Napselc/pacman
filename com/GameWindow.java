@@ -1,7 +1,7 @@
 package com;
 import javax.swing.JFrame;
 
-public class GameWindow extends JFrame{
+public class GameWindow extends JFrame {
     
     public GameWindow(){
         add(new GamePannel());
