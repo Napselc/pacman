@@ -10,10 +10,14 @@ import com.logic.Position;
 public class Ghost implements Painting{
     private static BufferedImage image ;
     private Position position = new Position(24, 120);
+    private int index = 0;
 
    static{
     image = ImageProvider.getImage("ghost.gif");
    }
+    public Ghost(int index){
+        this.index = index;
+    }
 
 
     @Override
@@ -23,7 +27,7 @@ public class Ghost implements Painting{
 
     @Override
     public void setInterpretation(GameInterpretation interpretation) {
-        position.setDirection(interpretation.getUserInputDirection());
+        position = interpretation.getGhostPositions().get(index);
     }
 
     

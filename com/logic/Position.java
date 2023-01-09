@@ -15,7 +15,7 @@ public class Position{
     /**
      * This API would allow user to update the position of an element based on direction
      */
-    public void setDirection(Direction direction){
+    public void move(Direction direction){
         switch(direction){
             case DOWN:
                 y = y + Constants.BLOCK_SIZE;
@@ -33,6 +33,13 @@ public class Position{
                 break;
 
         }
+        // System.out.printf("x: '%s' y: '%s'",x,y);
         
     }
+
+    @Override
+    public String toString() {
+        return "Position [x=" + x + ", y=" + y + "]";
+    }
+
 }

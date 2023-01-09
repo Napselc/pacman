@@ -7,12 +7,14 @@ import javax.swing.JPanel;
 
 import com.Drawing.RenderingModule;
 import com.logic.GameInterpretation;
+import com.logic.modifiers.GameModifier;
 
 public class GamePannel extends JPanel {
     
     private final Controls controls;
     private GameInterpretation gameInterpretation = new GameInterpretation();
     private RenderingModule renderingModule = new RenderingModule();
+    private GameModifier modifier = new GameModifier();
 
     
 
@@ -30,6 +32,7 @@ public class GamePannel extends JPanel {
         this.gameInterpretation.setUserInputDirection(controls.getDirection());
         renderingModule.setInterpretation(gameInterpretation);
         renderingModule.draw((Graphics2D) graphics);
+        modifier.updaGameInterpretation(gameInterpretation);
     }
 
     

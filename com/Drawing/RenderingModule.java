@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.Constants;
 import com.logic.GameInterpretation;
 
 /**
@@ -14,7 +15,7 @@ public class RenderingModule implements Painting{
 
     public RenderingModule(){
         paintings.add(new Maze());
-        paintings.add(new Ghost());
+        paintings.add(new Ghosts(Constants.NUMBER_OF_GHOSTS));
     }
 
     @Override
