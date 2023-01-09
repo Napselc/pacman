@@ -1,11 +1,6 @@
 package com.logic;
 
-import java.awt.Graphics2D;
-
 import com.Direction;
-import com.Drawing.Ghost;
-import com.Drawing.Maze;
-import com.Drawing.Painting;
 
 public class GameInterpretation{
     private final short leveldata[] = {
@@ -31,9 +26,7 @@ public class GameInterpretation{
         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 21,  0,  0,  0,
     };
     
-    private Painting maze = new Maze();
-    private Painting ghost = new Ghost();
-
+    
     private Direction userInputDirection;
 
     
@@ -41,13 +34,6 @@ public class GameInterpretation{
     //TODO : divide this logic into components eg. getMaze, getDots , getGhosts
     public short[] getLeveldata() {
         return leveldata;
-    }
-
-    public void draw(Graphics2D graphics) {
-        maze.setInterpretation(this);
-        ghost.setInterpretation(this);
-        maze.draw(graphics);
-        ghost.draw(graphics);
     }
 
     public void setUserInputDirection(Direction direction) {
