@@ -11,8 +11,11 @@ import java.nio.charset.CharsetDecoder;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.logic.GameInterpretation;
+
 public class ServerSideCommunication {
     static int playerCount = 0;
+    static GameInterpretation gameInterpretation = new GameInterpretation();
     static String interpretation = "Server interpretaion";
 
     
@@ -49,7 +52,7 @@ public class ServerSideCommunication {
             response = Commands.PLAYER_ID+playerCount;
             playerCount++;
         }else { //if(request.startsWith(Commands.UPDATE))
-            response = playerCount < 2 ? Commands.HOLD : interpretation;
+            response = playerCount < 2 ? Commands.HOLD : gameInterpretation.getString();
             // String userInput = request.substring(6);
             // interpretation = interpretation+userInput;
             // response = interpretation;

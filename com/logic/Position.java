@@ -1,9 +1,11 @@
 package com.logic;
 
+import java.io.Serializable;
+
 import com.Constants;
 import com.Direction;
 
-public class Position{
+public class Position implements Serializable{
     public int x,y;
 
     //TODO: save the previous direction and add smooth movement.

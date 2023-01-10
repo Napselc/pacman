@@ -1,9 +1,19 @@
 package com.logic;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
+import com.Constants;
 import com.Direction;
 
 public class GameInterpretation  implements Serializable {
@@ -58,5 +68,37 @@ public class GameInterpretation  implements Serializable {
 
     public Direction getUserInputDirection() {
         return this.userInputDirection;
+    }
+
+    //Serialization
+    public String getString() {
+        List<Integer> ghostPositions = new ArrayList<>();
+        for (Position position : ghosts) {
+            ghostPositions.add(position.x);
+            ghostPositions.add(position.y);
+        }
+
+        return ghostPositions.stream().map(position -> position.toString()).collect(Collectors.joining(","));
+    }
+
+    //De-serialization
+    public static GameInterpretation setInterpretation(String interpretation){
+        GameInterpretation gameInterpretation = new GameInterpretation();
+        List<String> positions = Arrays.asList( interpretation.split(","));
+        Iterator<String> iterator = positions.iterator();
+        //default interpretation
+        IntStream.range(0, Constants.NUMBER_OF_GHOSTS).forEach(ghost ->{
+            int x = Integer.parseInt(iterator.next());
+            int y = Integer.parseInt(iterator.next());
+            Position position = new Position(x,y);
+            gameInterpretation.ghosts.set(ghost,position);
+        });
+
+        return gameInterpretation;
+    }
+
+    @Override
+    public String toString() {
+        return "GameInterpretation [ ghosts=" + ghosts + "]";
     }
 }

@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
+import com.logic.GameInterpretation;
+
 public class ClientSideCommunication {
     
     private static String playerID;
@@ -51,8 +53,11 @@ public class ClientSideCommunication {
         if(response.startsWith(Commands.PLAYER_ID)){
             playerID = response.substring(10);
             System.out.println("player client Id "+playerID);
-        }else{
+        }else if(response.startsWith(Commands.HOLD)){
             System.out.println(response);
+        }else{
+            GameInterpretation newInterpretation = GameInterpretation.setInterpretation(response);
+            System.out.println(""+newInterpretation);
         }
     }
 
