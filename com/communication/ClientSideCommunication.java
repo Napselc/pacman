@@ -56,8 +56,8 @@ public class ClientSideCommunication {
         }else if(response.startsWith(Commands.HOLD)){
             System.out.println(response);
         }else{
-            GameInterpretation newInterpretation = GameInterpretation.setInterpretation(response);
-            System.out.println(""+newInterpretation);
+            // System.out.print(response);
+            GameInterpretation.setInterpretation(response);
         }
     }
 

@@ -1,10 +1,5 @@
 package com.logic;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +12,12 @@ import com.Constants;
 import com.Direction;
 
 public class GameInterpretation  implements Serializable {
+    public static GameInterpretation gameInterpretation = new GameInterpretation();
+    
+    private GameInterpretation(){
+        //empty constructor
+    }
+    
     private final transient short leveldata[] = {
         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 21,  0,  0,  0,
         0, 19, 26, 26, 18, 26, 18, 26, 26, 26, 26, 18, 26, 18, 26, 26, 24, 26, 22,  0,
@@ -40,6 +41,7 @@ public class GameInterpretation  implements Serializable {
         0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 21,  0,  0,  0,
     };
     
+
     
     private Direction userInputDirection;
 
@@ -82,8 +84,8 @@ public class GameInterpretation  implements Serializable {
     }
 
     //De-serialization
-    public static GameInterpretation setInterpretation(String interpretation){
-        GameInterpretation gameInterpretation = new GameInterpretation();
+    public static void setInterpretation(String interpretation){
+        GameInterpretation gameInterpretation1 = new GameInterpretation();
         List<String> positions = Arrays.asList( interpretation.split(","));
         Iterator<String> iterator = positions.iterator();
         //default interpretation
@@ -91,10 +93,11 @@ public class GameInterpretation  implements Serializable {
             int x = Integer.parseInt(iterator.next());
             int y = Integer.parseInt(iterator.next());
             Position position = new Position(x,y);
-            gameInterpretation.ghosts.set(ghost,position);
+            gameInterpretation1.ghosts.set(ghost,position);
         });
 
-        return gameInterpretation;
+         GameInterpretation.gameInterpretation = gameInterpretation1;
+         System.out.println(gameInterpretation);
     }
 
     @Override

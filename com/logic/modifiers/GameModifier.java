@@ -15,8 +15,14 @@ public class GameModifier implements ComponentModifier {
 
 
     @Override
-    public void updaGameInterpretation(GameInterpretation currentInterpretation) {
+    public synchronized void updaGameInterpretation(GameInterpretation currentInterpretation) {
          componentModifiers.forEach(modifier -> modifier.updaGameInterpretation(currentInterpretation));
+         try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     
 }

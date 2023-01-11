@@ -13,4 +13,10 @@ client
 
 Server  
     reqdx = clientPosition
+
+
+Pending tasks:
+    Render pacman based on the intrepretation
+    Move validity
+    Game tick and same ineterpretation
     

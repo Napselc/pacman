@@ -33,12 +33,11 @@ public class GameClient {
             while (true) { 
                 if (selector.select() > 0) { 
                     boolean doneStatus = ClientSideCommunication.process(selector.selectedKeys()); 
+                    gameWindow.repaint();
                     if (doneStatus) { 
-                        
                         break; 
                     } 
-                    gameWindow.repaint();
-                    Thread.sleep(1000);
+                    
                 } 
             } 
         } 

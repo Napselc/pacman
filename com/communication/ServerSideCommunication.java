@@ -1,6 +1,7 @@
 package com.communication;
 
 import java.io.IOException;
+import java.lang.module.ModuleDescriptor.Modifier;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.channels.SelectionKey;
@@ -12,10 +13,12 @@ import java.util.Iterator;
 import java.util.Set;
 
 import com.logic.GameInterpretation;
+import com.logic.modifiers.GameModifier;
 
 public class ServerSideCommunication {
     static int playerCount = 0;
-    static GameInterpretation gameInterpretation = new GameInterpretation();
+    static GameInterpretation gameInterpretation = GameInterpretation.gameInterpretation;
+    private static GameModifier modifier = new GameModifier();
     static String interpretation = "Server interpretaion";
 
     
@@ -53,9 +56,8 @@ public class ServerSideCommunication {
             playerCount++;
         }else { //if(request.startsWith(Commands.UPDATE))
             response = playerCount < 2 ? Commands.HOLD : gameInterpretation.getString();
-            // String userInput = request.substring(6);
-            // interpretation = interpretation+userInput;
-            // response = interpretation;
+            //TODO: move this to game tick based
+            modifier.updaGameInterpretation(gameInterpretation);
         }
     
         return response;
